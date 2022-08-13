@@ -1,0 +1,93 @@
+:root{
+    --BackgroundCard: rgba(255,255,255,0.5);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    background-image: url(../assets/bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    height: 100vh; 
+}
+.board-container{
+    height: 50%;
+    display: flex;
+    width: 100%;
+    border: 1px solid red;
+}
+
+.cards-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.score{
+    position: absolute;
+    top: 35%;
+    right: 45%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--BackgroundCard);
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+}  
+.card{
+    background-color: var(--BackgroundCard);
+    width: 200px;
+    height: 300px;
+    margin: 10px;
+    transform: translate(0,0);
+    transition: transform 0.3s;
+}
+.card-pc {
+    background-color: var(--BackgroundCard);
+    width: 100px;
+    height: 150px;
+    margin: 10px;
+    transform: translate(0,0);
+    transition: transform 0.3s;
+}
+.rock {
+    background-image: url(../assets/rock.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(-30deg);
+}
+.rock:hover{
+    transform:translate(-30px,-60px)rotate(-30deg);
+}
+.paper{
+    background-image: url(../assets/paper.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.paper:hover{
+    transform: translate(0,-60px);
+}
+.scissors{
+    background-image: url(../assets/scissors.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform: rotate(30deg);
+}
+.scissors:hover{
+    transform: translate(30px,-60px)rotate(30deg);
+}
+
