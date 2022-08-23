@@ -1,39 +1,50 @@
+import { playerPlay } from "./playerPlay.js";
+import { pcPlay } from "./pcPlay.js";
+
+
+
 const playerCards= document.querySelectorAll("html body div.player.board-container div.cards-container div.card");
-const scoreDiv = document.querySelector(".score")
+const scoreDiv = document.querySelector(".score");
+const pcCards = document.querySelectorAll(".cards-container .card-pc");
+console.log(pcCards);
 
-console.log(playerCards);
-
-playerCards.forEach(elem => elem.addEventListener("click",(e)=> {
-    let iaValue = pcPlay()
-    let playerValue = playerPlay(iaValue,e)
-    scoreResult(playerValue)
-}));
-
-function pcPlay(){
-    let nValue = Math.floor(Math.random() * 31);
-    let rock = (nValue > 0 && nValue < 10),
-        paper = (nValue > 10 && nValue < 20),
-        scissors = (nValue > 20 && nValue < 30);
-    
-    let result = rock ? "rock" : paper ? "paper" : scissors ? "scissors" : "default";
-    return result;
-}
-
-function playerPlay(pcValue,e){
-    let playerValue = e.target.getAttribute("value");
-    console.log(pcValue);
-    let isWin = (playerValue == "rock" && pcValue == "scissors") || 
-        (playerValue == "paper" && pcValue == "rock") ||
-        (playerValue == "scissors" && pcValue == "paper");
-    let isTie = (playerValue == pcValue);
-
-    let score = isTie ? "tie" : isWin ? "win" : "lose"
-    console.log(score);
-    return score
-    
-}
 
 function scoreResult(score) {
-    scoreDiv.firstChild.textContent = score;
-    scoreDiv.children[1].children[0] = "Win: "
+    scoreDiv.classList.remove("score-active");
+    scoreDiv.classList.toggle("score-active");
+    setTimeout(() => {
+        scoreDiv.classList.remove("score-active");
+    }, 2000);
+    scoreDiv.children[0].textContent = score;
+    console.log(scoreDiv.children[0]);
+    // scoreDiv.children[1].children[0] = "Win: "
+}
+
+playerCards.forEach(elem => elem.addEventListener("click",(e)=> {
+    let pcValue = pcPlay()
+    let playerValue = playerPlay(pcValue,e)
+    scoreResult(playerValue)
+    pcActiveCards(pcValue)
+}));
+
+function pcActiveCards(value){
+    pcCards[0].classList.remove("active-rock");
+    pcCards[1].classList.remove("active-paper");
+    pcCards[2].classList.remove("active-scissors");
+    if( value == "rock"){
+        pcCards[0].classList.toggle("active-rock");
+        setTimeout(() => {
+            pcCards[0].classList.remove("active-rock");
+        }, 2000);
+    }else if(value == "paper"){
+        pcCards[1].classList.toggle("active-paper");
+        setTimeout(() => {
+            pcCards[1].classList.remove("active-paper");
+        }, 2000);
+    }else {
+        pcCards[2].classList.toggle("active-scissors")
+        setTimeout(() => {
+            pcCards[2].classList.remove("active-scissors");
+        }, 2000);
+    }
 }

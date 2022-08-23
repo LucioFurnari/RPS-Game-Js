@@ -21,7 +21,7 @@ body {
     height: 50%;
     display: flex;
     width: 100%;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .cards-container{
@@ -33,18 +33,21 @@ body {
 }
 
 .score{
+    display: none;
     position: absolute;
-    top: 35%;
+    top: 30%;
     right: 45%;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    z-index: 2;
     background-color: var(--BackgroundCard);
     height: 200px;
     width: 200px;
     border: 1px solid black;
 }  
+.score-active{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .card{
     background-color: var(--BackgroundCard);
     width: 200px;
@@ -52,6 +55,7 @@ body {
     margin: 10px;
     transform: translate(0,0);
     transition: transform 0.3s;
+    z-index: 1;
 }
 .card-pc {
     background-color: var(--BackgroundCard);
@@ -61,6 +65,7 @@ body {
     transform: translate(0,0);
     transition: transform 0.3s;
 }
+
 .rock {
     background-image: url(../assets/rock.jpg);
     background-position: center;
@@ -68,7 +73,7 @@ body {
     background-size: cover;
     transform: rotate(-30deg);
 }
-.rock:hover{
+.card.rock:hover{
     transform:translate(-30px,-60px)rotate(-30deg);
 }
 .paper{
@@ -77,7 +82,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
-.paper:hover{
+.card.paper:hover{
     transform: translate(0,-60px);
 }
 .scissors{
@@ -87,7 +92,17 @@ body {
     background-size: cover;
     transform: rotate(30deg);
 }
-.scissors:hover{
+.card.scissors:hover{
+    transform: translate(30px,-60px)rotate(30deg);
+}
+
+.active-rock{
+    transform:translate(-30px,-60px)rotate(-30deg);
+}
+.active-paper{
+    transform: translate(0,-60px);
+}
+.active-scissors{
     transform: translate(30px,-60px)rotate(30deg);
 }
 
